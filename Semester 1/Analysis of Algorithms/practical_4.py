@@ -10,33 +10,33 @@ def insertionSort(b):
         b[j + 1] = up
     return b
 
-def bucketSort(x):
-    arr = []
-    slot_num = 10 # 10 means 10 slots, each
-                # slot's size is 0.1
-    for i in range(slot_num):
-        arr.append([])
+def bucket_sort(arr):
 
-    # Put array elements in different buckets
-    for j in x:
-        index_b = int(slot_num * j)
-        arr[index_b].append(j)
+    bucket = []
 
-    # Sort individual buckets
-    for i in range(slot_num):
-        arr[i] = insertionSort(arr[i])
+    for i in range(10):
+        bucket.append([])
+    # print(bucket)
 
-    # concatenate the result
+    for j in arr: # .23
+        index = int(10 * j) # 10 x .23 = 2.3 = 2
+        bucket[index].append(j) # bucket[2].append(.23)
+    # print(bucket)
+
+    for i in range(len(arr)):
+        bucket[i] = sorted(bucket[i])
+    # print(bucket)
+
+    # Get the sorted elements
     k = 0
-    for i in range(slot_num):
-        for j in range(len(arr[i])):
-            x[k] = arr[i][j]
-            k += 1
-    return x
+    for i in range(len(arr)):
+        for j in range(len(bucket[i])):
+            arr[k] = bucket[i][j]
+            k = k + 1
+    return arr
 
-# Driver Code
 x = [0.897, 0.565, 0.656,
     0.1234, 0.665, 0.3434]
 print("Sorted Array is")
-print(bucketSort(x))
+print(bucket_sort(x))
 

@@ -23,7 +23,7 @@ def isSubsetSum(set,n, sum):
 
 # Driver program to test above function
 set = [3, 34, 4, 12, 5, 2]
-sum = 9
+sum = 18
 n = len(set)
 if (isSubsetSum(set, n, sum) == True) :
     print("Found a subset with given sum")

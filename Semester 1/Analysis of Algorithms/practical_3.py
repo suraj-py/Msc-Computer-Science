@@ -1,58 +1,44 @@
-# Python program for implementation of Radix Sort
+# Radix sort in Python
 
-# A function to do counting sort of arr[] according to
-# the digit represented by exp.
-def countingSort(arr, exp1):
 
-    n = len(arr)
+# Using counting sort to sort the elements in the basis of significant places
+def countingSort(array, place):
+    size = len(array)
+    output = [0] * size
+    count = [0] * 10
 
-    # The output array elements that will have sorted arr
-    output = [0] * (n)
+    # Calculate count of elements
+    for i in range(0, size):
+        index = array[i] // place
+        count[index % 10] += 1
 
-    # initialize count array as 0
-    count = [0] * (10)
+    # Calculate cumulative count
+    for i in range(1, 10):
+        count[i] += count[i - 1]
 
-    # Store count of occurrences in count[]
-    for i in range(0, n):
-        index = (arr[i]/exp1)
-        count[int((index)%10)] += 1
-
-    # Change count[i] so that count[i] now contains actual
-    # position of this digit in output array
-    for i in range(1,10):
-        count[i] += count[i-1]
-
-    # Build the output array
-    i = n-1
-    while i>=0:
-        index = (arr[i]/exp1)
-        output[ count[ int((index)%10) ] - 1] = arr[i]
-        count[int((index)%10)] -= 1
+    # Place the elements in sorted order
+    i = size - 1
+    while i >= 0:
+        index = array[i] // place
+        output[count[index % 10] - 1] = array[i]
+        count[index % 10] -= 1
         i -= 1
 
-    # Copying the output array to arr[],
-    # so that arr now contains sorted numbers
-    i = 0
-    for i in range(0,len(arr)):
-        arr[i] = output[i]
+    for i in range(0, size):
+        array[i] = output[i]
 
-# Method to do Radix Sort
-def radixSort(arr):
+# Main function to implement radix sort
+def radixSort(array):
+    # Get maximum element
+    max_element = max(array)
 
-    # Find the maximum number to know number of digits
-    max1 = max(arr)
-
-    # Do counting sort for every digit. Note that instead
-    # of passing digit number, exp is passed. exp is 10^i
-    # where i is current digit number
-    exp = 1
-    while max1/exp > 0:
-        countingSort(arr,exp)
-        exp *= 10
+    # Apply counting sort to sort elements based on place value.
+    place = 1
+    while max_element // place > 0:
+        countingSort(array, place)
+        place *= 10
 
 # Driver code to test above
-arr = [ 170, 45, 75, 90, 802, 24, 2, 66]
+arr = [ 170, 987, 675, 345, 123, 532, 687]
 radixSort(arr)
-
-for i in range(len(arr)):
-    print(arr[i], end=', ')
+print(arr)
