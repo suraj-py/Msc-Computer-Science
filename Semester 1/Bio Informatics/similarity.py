@@ -1,51 +1,37 @@
-from random import choice, randint
-from string import ascii_uppercase
+def similarity():
 
-sequence_list = []
+    seq_1 = list(input('Enter Sequence 1: '))
+    seq_2 = list(input('Enter Sequence 2: '))
 
-def get_sequences() -> tuple[list[str]]:
-	sequence_length = randint(8, 50)
-	sequence_1 = [choice(ascii_uppercase) for i in range(sequence_length)]
-	sequence_2 = [choice(ascii_uppercase) for i in range(sequence_length)]
-	
-	return sequence_1, sequence_2
+    similarity = []
 
+    n = int(input('How many elements you want similar: '))
 
-def get_similar_protein_set():
-	sequence_count = int(input("Enter the number of similar protein sets>\t"))
-	
-	global sequence_list
-	for i in range(sequence_count):
-		sequence_list.append(list(input(f"Enter similar protein set {i + 1}>\t")))
+    for i in range(n):
+        ele = input('Enter an element: ')
+        m = int(input('How many elements are similar to: '))
 
+        similarity.append([])
+        similarity[i].append(ele)
 
-def check_similarity(char_1 : str, char_2 : str) -> bool:
-	global sequence_list
-	for i in sequence_list:
-		if (char_1 != char_2):
-			if char_1 in i and char_2 in i:
-				return True
-	
-	return False
+        for j in range(m):
+            ele2 = input('What is it similar to: ')
+            similarity[i].append(ele2)
 
+    print(f'Sequence 1: {seq_1}')
+    print(f'Sequence 2: {seq_2}')
+    print(f'Similar elements: {similarity}')
 
-def similarity(sequence_1 : list[str], sequence_2 : list[str]) -> tuple[int, list[str]]:
-	similarity_list = [1 if i else 0 for i in list(map(check_similarity, sequence_1, sequence_2))]
-	similarity_value = sum(similarity_list)
-	
-	return similarity_value, similarity_list
+    score = 0
+    for i in range(len(seq_1)):
+        for j in range(len(similarity)):
+
+            if seq_1[i] in similarity[j] and seq_2[i] in similarity[j] and seq_1[i] != seq_2[i]:
+                score += 1
+
+    sim = (score/n) * 100
+
+    print(f'Simirarity is {sim} %')
 
 
-if __name__ == "__main__":
-	sequence_1, sequence_2 = get_sequences()
-	print("Sequence 1 is>\n", sequence_1)
-	print("Sequence 2 is>\n", sequence_2)
-	print("\n")
-	
-	get_similar_protein_set()
-	print("Similar protein sets are>\n", sequence_list)
-	print("\n")
-	
-	similarity_value, similarity_list = similarity(sequence_1, sequence_2)
-	print("Similarity list is>\n", similarity_list)
-	print(f"Similarity is {round((similarity_value / len(sequence_1)) * 100, 2)}%")
+similarity()
