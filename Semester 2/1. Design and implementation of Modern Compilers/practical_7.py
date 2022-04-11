@@ -1,6 +1,7 @@
 '''
 Practical 7
-Q. Write a code to generate the DAG for the input arithmetic expression.
+Q. Write a code to demonstrate loop jamming for the given
+    code sequence containing loop.
 '''
 
 import time

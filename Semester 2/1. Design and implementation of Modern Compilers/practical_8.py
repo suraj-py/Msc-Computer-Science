@@ -1,7 +1,7 @@
 '''
 Practical 8
-Q. Write a program to demonstrate loop unrolling and loop jamming for the given
-   code sequence containing loop.
+Q. Write a code to demonstrate loop unrolling for the given
+    code sequence containing loop.
 '''
 
 import time

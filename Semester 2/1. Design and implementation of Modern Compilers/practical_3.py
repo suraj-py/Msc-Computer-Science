@@ -1,7 +1,6 @@
 '''
 Practical 3
-Q. Write a program to illustrate the generation of First, First+, Last and Last+ matrix on SPM for the
-   input grammar.
+Q. Write a code to generate DAG for input arithmetic expression.
 '''
 
 def func_1(x):

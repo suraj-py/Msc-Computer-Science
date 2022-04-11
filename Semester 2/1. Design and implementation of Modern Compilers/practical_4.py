@@ -1,6 +1,6 @@
 '''
 Practical 4
-Q. Write a program code to parse a string by using SPM.
+Q. Write a code to for triples.
 '''
 
 def func_1(x):
