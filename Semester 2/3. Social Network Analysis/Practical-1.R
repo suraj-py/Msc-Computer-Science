@@ -37,3 +37,31 @@ degree(dg)
 
 V(dg)$name[degree(dg,mode="in")==min(degree(dg,mode = "in"))]
 
+
+# Graph 3
+library(igraph)
+
+dg <- graph.formula(A-+B, B-+C, B-+D, C-+D, D-+C, D++A )
+plot(dg)
+
+ecount(dg)
+vcount(dg)
+
+E(dg)
+V(dg)
+
+degree(dg)
+
+degree(dg, mode="in")
+
+degree(dg, mode="out")
+
+V(dg)$name[degree(dg, mode="in") == max(degree(dg, mode="in"))]
+
+V(dg)$name[degree(dg, mode="in") == min(degree(dg, mode="in"))]
+
+V(dg)$name[degree(dg, mode="out") == max(degree(dg, mode="out"))]
+
+V(dg)$name[degree(dg, mode="in") == min(degree(dg, mode="in"))]
+
+V(dg)$name[degree(dg, mode="out") == min(degree(dg, mode="out"))]

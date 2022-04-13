@@ -11,3 +11,4 @@ my.df.scale<-scale(my.df)
 d<-dist(my.df.scale,method = "euclidean")
 fit<-hclust(d,method = "ward.D")
 plot(fit) 
+
