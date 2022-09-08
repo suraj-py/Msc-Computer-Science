@@ -17,6 +17,6 @@ public class circular {
     }
     
     public static void main (String[] args) {
-        circular m = new circular();
+        circular robo = new circular();
     }
 }
