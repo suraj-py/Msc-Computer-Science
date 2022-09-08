@@ -1,8 +1,8 @@
 package assignment1;
 
-import ch.aplu.robotsim.*;
-
 //ASSIGNMENT 1 - SQUARE AND CIRCULAR MOTION WITHOUT USING GEAR.
+
+import ch.aplu.robotsim.*;
 
 public class square {
     square(){

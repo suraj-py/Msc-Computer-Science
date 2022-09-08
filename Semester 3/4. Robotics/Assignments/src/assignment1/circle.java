@@ -1,5 +1,7 @@
 package assignment1;
 
+//ASSIGNMENT 1 - SQUARE AND CIRCULAR MOTION WITHOUT USING GEAR.
+
 import ch.aplu.robotsim.*;
 
 public class circle {
