@@ -4,24 +4,24 @@ public class MyLogger
 {
     public static void main(String args[])
     {
-        Logger l=Logger.getLogger(MyLogger.class.getName());
-        FileHandler fh;
-        try
-        {
-            fh=new FileHandler("mylogfile.log",true);
-            l.addHandler(fh);
-            SimpleFormatter sf=new SimpleFormatter();
-            fh.setFormatter(sf);
-            l.info("My first log");
-         }
-        catch(SecurityException e)
-        {
-              e.printStackTrace();
+        Logger log = Logger.getLogger(practice.class.getName());
+
+        try{
+            FileHandler file = new FileHandler("mylog.log", true);
+            log.addHandler(file);
+            log.setLevel(Level.ALL);
+
+            SimpleFormatter format = new SimpleFormatter();
+            file.setFormatter(format);
+
+            log.info("My first log");
         }
-        catch(IOException e)
-        {
-             e.printStackTrace();
+        catch(IOException i){
+            i.printStackTrace();
         }
-        l.info("Hi How r u?");
+        catch(SecurityException se){
+            se.printStackTrace();
+        }
+        log.info("How are you?");
     }
 }

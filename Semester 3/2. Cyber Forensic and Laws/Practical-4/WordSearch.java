@@ -3,32 +3,34 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.InputStreamReader;
 public class WordSearch {
-    public static void main(String[] args) {
-    try
-    {
-        String str="";
-        String ser="";
-        int flag=0;
-        BufferedReader br=new BufferedReader(new FileReader("file.txt"));
-        BufferedReader br1=new BufferedReader(new InputStreamReader(System.in));
-        str=br.readLine();
-        String [] s = new String[str.length()];
-        System.out.println("enter the text u want to search");
-        ser=br1.readLine();
-        s=str.split(" ");
-        for(int i=0;i<s.length;i++)
-            {
-            if(ser.equalsIgnoreCase(s[i]))
-            {
-            System.out.println("Text "+ser+" Found");
-            flag=1;
+ public static void main(String[] args) throws IOException{
+
+        String str = "";
+        String ser = "";
+        int flag = 0;
+
+        FileReader file = new FileReader("hello.txt");
+        BufferedReader buff_r = new BufferedReader(file);
+        str = buff_r.readLine();
+
+        InputStreamReader i = new InputStreamReader(System.in);
+        BufferedReader buff_s = new BufferedReader(i);
+        System.out.println("Enter the word that you want to search: ");
+        ser = buff_s.readLine();
+
+        String[] s = new String[str.length()];
+        s = str.split(" ");
+
+        for(int a=0; a<s.length; a++){
+            if(ser.equalsIgnoreCase(s[a])){
+                System.out.println("Text "+ser+" found");
+                flag = 1;
             }
+            if(flag==0){
+                System.out.println("Text "+ser+" not found");
             }
-        if(flag==0)
-        System.out.println("Text "+ser+" Not Found");
+        }
+
+
     }
-    catch(Exception e){
-        System.out.println(e);
-    }
-}
 }
